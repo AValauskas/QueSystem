@@ -5,7 +5,6 @@ class config {
     const DB_NAME      = 'que';
     const DB_USERNAME  = 'root';
     const DB_PASSWORD  = '';
-    const NUMBER_OF_ROWS_IN_PAGE = 5;
 }
 
 ?>

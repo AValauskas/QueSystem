@@ -1,8 +1,6 @@
 <?php
 
-include '../config.php';
-include '../database.php';
-include '../model/Client.php';
+include 'model/Client.php';
 
 
 $clientobj = new Client();
@@ -17,5 +15,5 @@ if($ser==3) {
     $clientdata=$clientobj->FirstClient();
     $check=0;
 }
-include '../view/specialist_page.php';
+include 'view/specialist_page.php';
 ?>
