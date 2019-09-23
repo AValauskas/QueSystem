@@ -61,6 +61,15 @@ class Client
         $data = mysql::select($query);
         return $data;
     }
+    public function LastId()
+    {
+        $query= "select * from Client where serviced='2' order by id_Client DESC LIMIT 1";
+        $data = mysql::select($query);
+        foreach ($data as $key => $val) {
+            $idd=$val['id_Client'];
+        }
+        return $idd;
+    }
     public function GetClientById($id)
     {
         $query= "select * from Client where id_Client='$id'";
@@ -129,12 +138,7 @@ class Client
 
 
         $hint .= ", $left";
-        /*if ( isset($left)) {
-            return response()->json([
-                'status' => 'success',
-                'id_Client' => $left,
-            ]);
-        }*/
+
         return $hint;
     }
     public function TimeLeft2($id){

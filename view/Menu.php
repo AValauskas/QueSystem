@@ -22,7 +22,10 @@
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
 
+        <?php
 
+        if($_SESSION['online'] != "is"){
+        ?>
         <ul class="nav navbar-nav navbar-right">
             <form class="navbar-form navbar-left" action="index.php?person=specialist&action=login" method="post">
                 <div class="form-group">
@@ -34,9 +37,11 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </ul>
+        <?php
+}
+?>
     </div>
 </nav>
-
 
 </body>
 </html>
