@@ -8,7 +8,10 @@ class Specialist
     public function  Login($user,$pass){
         $query = "SELECT * from specialist where username = '$user' and password ='$pass'";
         $data = mysql::select($query);
-        return $data[0];
+        if(!empty($data))
+        {
+        return $data[0];}
+        else return null;
     }
 
 }

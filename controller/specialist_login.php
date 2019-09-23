@@ -9,7 +9,7 @@ $log=$_POST['username'];
 $pass=$_POST['password'];
 
 $data = $specialistobj->Login($log,$pass);
-if(isset($data))
+if(!empty($data))
 {
     $_SESSION['online']="is";
     include 'model/Client.php';
@@ -20,7 +20,7 @@ if(isset($data))
 
 }
 else{
-    var_dump("errrror");
+   echo "Unsuccesfully login";
 
 }
 

@@ -1,4 +1,7 @@
 <?php
-var_dump($left);
+
 
 ?>
+Time Left
+<p id="timer"></p>
+

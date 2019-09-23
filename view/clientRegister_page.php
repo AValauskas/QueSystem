@@ -8,7 +8,7 @@
         </fieldset>
         <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
         <p>
-            <button  type=submit class="btn2" name="submit" onclick="openForm() ">Submit</button>
+            <button  type=submit class="btn2" name="submit" >Submit</button>
         </p>
     </form>
 </div>

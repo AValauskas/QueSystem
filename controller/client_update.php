@@ -1,11 +1,11 @@
 <?php
-
 include 'model/Client.php';
 
 
 $clientobj = new Client();
 $id=$_GET['id'];
 $ser=$_GET['service'];
+
 if($ser==3) {
     $clientobj->ConfirmClient($id, $ser);
     $check = 1;

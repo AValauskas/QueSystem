@@ -94,6 +94,50 @@ class Client
         return $timelaped;
     }
     public function TimeLeft($id){
+        $hint="";
+        $finishedclient ="select count(*) from client where serviced='1' and id_Client<$id";
+        $workingspecialists ="select count(*) from specialist where working='1'";
+        $que ="select count(*) from client where serviced='2' and id_Client<$id";
+
+        $data = mysql::select($finishedclient);
+        foreach ($data as $key => $val) {
+            $rowfinish=$val['count(*)'];
+        }
+
+        $data = mysql::select($workingspecialists);
+        foreach ($data as $key => $val) {
+            $rowspecialist=$val['count(*)'];
+        }
+
+        $data = mysql::select($que);
+        foreach ($data as $key => $val) {
+            $rowque=$val['count(*)'];
+        }
+
+        $query= "select * from Client where serviced='1' and id_Client<$id";
+        $data = mysql::select($query);
+
+        $diff=0;
+        foreach ($data as $key => $val)
+        {
+            $diff=$diff+$val['timestampend']-$val['timestampstart'];
+        }
+
+        $avrgwospeccount=$diff/$rowfinish;
+        $avrgtot=$avrgwospeccount/ $rowspecialist;
+        $left=round($avrgtot*$rowque, 0);
+
+
+        $hint .= ", $left";
+        /*if ( isset($left)) {
+            return response()->json([
+                'status' => 'success',
+                'id_Client' => $left,
+            ]);
+        }*/
+        return $hint;
+    }
+    public function TimeLeft2($id){
         $finishedclient ="select count(*) from client where serviced='1' and id_Client<$id";
         $workingspecialists ="select count(*) from specialist where working='1'";
         $que ="select count(*) from client where serviced='2' and id_Client<$id";
@@ -129,6 +173,8 @@ class Client
 
 
     }
+
+
 
 
 
